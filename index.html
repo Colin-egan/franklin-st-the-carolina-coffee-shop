@@ -1,19 +1,20 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Home · Carolina Coffee Shop</title>
-<meta name="description" content="North Carolina&#x27;s oldest continuously operating restaurant — Carolina Coffee Shop on Franklin Street, Chapel Hill.">
-<link rel="stylesheet" href="styles.css"></head><body>
+<meta content="North Carolina's oldest continuously operating restaurant — Carolina Coffee Shop on Franklin Street, Chapel Hill." name="description"/>
+<link href="styles.css" rel="stylesheet"/></head><body>
 <header class="nav"><div class="container nav-inner">
-<a href="index.html" class="brand">Carolina Coffee Shop</a>
-<nav><ul class="nav-links"><li><a href="index.html" class="active">Home</a></li><li><a href="menu.html" class="">Menu</a></li><li><a href="about.html" class="">About</a></li><li><a href="contact.html" class="">Contact</a></li></ul></nav></div></header>
-<section class="hero"><div class="container">
-<h1>Carolina Coffee Shop</h1><p>North Carolina&#x27;s oldest continuously operating restaurant</p>
-<a class="btn" href="menu.html">View Menu</a></div></section>
+<a class="brand" href="index.html">Carolina Coffee Shop</a>
+<nav><ul class="nav-links"><li><a class="active" href="index.html">Home</a></li><li><a class="" href="menu.html">Menu</a></li><li><a class="" href="about.html">About</a></li><li><a class="" href="contact.html">Contact</a></li></ul></nav></div></header>
+<section class="hero has-photo" style="--hero-img:url('images/img0.jpg')"><div class="container">
+<h1>Carolina Coffee Shop</h1><p>North Carolina's oldest continuously operating restaurant</p>
+<div class="actions"><a class="btn" href="javascript:void(0)" onclick="openModal('order')">🛒 Order Online</a><a class="btn" href="javascript:void(0)" onclick="openModal('reserve')">📅 Reserve a Table</a><a class="btn secondary" href="menu.html">View Menu</a></div></div></section>
 <section class="section"><div class="container">
 <div class="grid"><div class="feature"><div class="ico">📍</div><h3>Prime Franklin St Location</h3><p>In the heart of downtown Chapel Hill, easy to find and easy to love.</p></div><div class="feature"><div class="ico">⭐</div><h3>Local Favorite</h3><p>Trusted by Tar Heels, students, and visitors for years.</p></div><div class="feature"><div class="ico">🕒</div><h3>Open &amp; Welcoming</h3><p>Mon–Sun 8:00am – 10:00pm</p></div></div></div></section>
 <section class="section" style="background:#fff"><div class="container">
 <h2>Featured Menu</h2><p class="lead">A taste of what we offer. Stop by to experience it all.</p>
-<div class="grid"><div class="card"><span class="price">$3.50</span><h3>House Espresso</h3><p>Rich double shot, locally roasted</p></div><div class="card"><span class="price">$4.50</span><h3>Cappuccino</h3><p>Espresso with steamed microfoam</p></div><div class="card"><span class="price">$13</span><h3>Eggs Benedict</h3><p>Poached eggs, hollandaise, English muffin</p></div></div>
+<div class="grid"><div class="card"><img alt="House Espresso" class="thumb" loading="lazy" src="images/img1.jpg"/><div class="card-body"><span class="price">$3.50</span><h3>House Espresso</h3><p>Rich double shot, locally roasted</p></div></div><div class="card"><img alt="Cappuccino" class="thumb" loading="lazy" src="images/img2.jpg"/><div class="card-body"><span class="price">$4.50</span><h3>Cappuccino</h3><p>Espresso with steamed microfoam</p></div></div><div class="card"><img alt="Eggs Benedict" class="thumb" loading="lazy" src="images/img3.jpg"/><div class="card-body"><span class="price">$13</span><h3>Eggs Benedict</h3><p>Poached eggs, hollandaise, English muffin</p></div></div></div>
 <div style="text-align:center;margin-top:40px"><a class="btn" href="menu.html">See the full Menu</a></div>
 </div></section>
 <section class="cta"><div class="container">
@@ -22,8 +23,50 @@
 <a class="btn" href="contact.html" style="margin-top:24px">Get in Touch</a></div></section>
 <footer><div class="container">
 <div class="brand">Carolina Coffee Shop</div>
-<p>138 E Franklin St, Chapel Hill, NC 27514 &nbsp;·&nbsp; (919) 942-6875</p>
+<p>138 E Franklin St, Chapel Hill, NC 27514  ·  (919) 942-6875</p>
 <p style="margin-top:6px">Mon–Sun 8:00am – 10:00pm</p>
-<p style="margin-top:16px">&copy; 2026 Carolina Coffee Shop · Franklin Street, Chapel Hill, NC · <a href="contact.html">Contact</a></p>
+<p style="margin-top:16px">© 2026 Carolina Coffee Shop · Franklin Street, Chapel Hill, NC · <a href="contact.html">Contact</a></p>
 </div></footer>
-</body></html>
+
+<div class="modal-bg" id="order"><div class="modal" id="order-body">
+<span class="close" onclick="closeModal('order')">×</span>
+<h3>Your Order</h3><p style="color:var(--muted);font-size:.9rem">Add items below or from the menu.</p>
+<div id="cart-lines"></div><div class="cart-total" id="cart-total"></div>
+<button class="btn" onclick="checkout()" style="width:100%;margin-top:6px">Checkout</button>
+<p class="note">Demo cart. Connect Stripe Payment Links / Toast / Square to accept real payments.</p>
+</div></div>
+<div class="modal-bg" id="reserve"><div class="modal" id="reserve-body">
+<span class="close" onclick="closeModal('reserve')">×</span>
+<h3>Reserve a Table</h3><p style="color:var(--muted);font-size:.9rem;margin-bottom:16px">Book your spot in seconds.</p>
+<div class="field"><label>Name</label><input required=""/></div>
+<div class="field"><label>Date</label><input type="date"/></div>
+<div class="field"><label>Time</label><input type="time"/></div>
+<div class="field"><label>Party size</label><select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+<button class="btn" onclick="submitForm('reserve-body','Table requested! 🎉')" style="width:100%">Request Reservation</button>
+<p class="note">Demo form. Connect OpenTable or Resy to confirm live bookings.</p>
+</div></div><button class="cart-fab" id="cartFab" onclick="openModal('order')" style="display:none">🛒 View Cart</button>
+<script>
+const MENU = [{"name": "House Espresso", "price": "$3.50"}, {"name": "Cappuccino", "price": "$4.50"}, {"name": "Eggs Benedict", "price": "$13"}, {"name": "Avocado Toast", "price": "$10"}, {"name": "Belgian Waffle", "price": "$11"}, {"name": "Cold Brew", "price": "$4"}];
+const CART = {};
+function money(s){const n=parseFloat(String(s).replace(/[^0-9.]/g,''));return isNaN(n)?0:n;}
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+function addToCart(name){CART[name]=(CART[name]||0)+1;renderCart();openModal('order');}
+function chg(name,d){CART[name]=(CART[name]||0)+d;if(CART[name]<=0)delete CART[name];renderCart();}
+function renderCart(){
+  const el=document.getElementById('cart-lines');if(!el)return;
+  let total=0,html='';const keys=Object.keys(CART);
+  if(!keys.length){el.innerHTML='<p style=\'color:#999\'>Your cart is empty. Add items from the menu.</p>';document.getElementById('cart-total').textContent='';updateFab();return;}
+  keys.forEach(k=>{const it=MENU.find(m=>m.name===k)||{price:'0'};const line=money(it.price)*CART[k];total+=line;
+    html+=`<div class='cart-line'><span>${k}</span><span class='qty'><button onclick=\"chg('${k.replace(/'/g,"\\'")}',-1)\">−</button>${CART[k]}<button onclick=\"chg('${k.replace(/'/g,"\\'")}',1)\">+</button></span></div>`;});
+  el.innerHTML=html;document.getElementById('cart-total').textContent='Total: $'+total.toFixed(2);updateFab();
+}
+function updateFab(){const f=document.getElementById('cartFab');if(!f)return;const c=Object.values(CART).reduce((a,b)=>a+b,0);f.style.display=c?'block':'none';f.textContent='🛒 View Cart ('+c+')';}
+function checkout(){
+  // GO-LIVE HOOK: replace with your Stripe Payment Link / Square Online / Toast URL
+  const c=Object.values(CART).reduce((a,b)=>a+b,0);
+  if(!c){alert('Add some items first!');return;}
+  document.getElementById('order-body').innerHTML='<h3>Order received! 🎉</h3><p style=\'margin-top:10px;color:var(--muted)\'>This demo confirms your order. Connect a Stripe Payment Link or Toast/Square account to accept live payments.</p>';
+}
+function submitForm(id,msg){document.getElementById(id).innerHTML='<h3>'+msg+'</h3><p style=\'margin-top:10px;color:var(--muted)\'>This demo confirms your request. Connect OpenTable/Resy (reservations) or a booking engine to go live.</p>';}
+</script></body></html>
